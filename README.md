@@ -82,7 +82,7 @@ mkdir -p /mnt/nas-smb
 **Store credentials securely:**
 
 ```bash
-nano /etc/samba/credentials
+nano /etc/.smbCreds
 ```
 
 Add the following:
@@ -95,19 +95,19 @@ password=your_smb_password
 Lock down the file:
 
 ```bash
-chmod 600 /etc/samba/credentials
+chmod 600 /etc/.smbCreds
 ```
 
 **Test the mount manually:**
 
 ```bash
-mount -t cifs //192.168.1.100/sharename /mnt/nas-smb -o credentials=/etc/samba/credentials
+mount -t cifs //192.168.1.100/sharename /mnt/nas-smb -o credentials=/etc/.smbCreds
 ```
 
 **Make it persistent via `/etc/fstab`:**
 
 ```
-//192.168.1.100/sharename  /mnt/nas-smb  cifs  credentials=/etc/samba/credentials,_netdev,uid=0,gid=0  0  0
+//192.168.1.100/sharename  /mnt/nas-smb  cifs  credentials=/etc/.smbCreds,_netdev,uid=0,gid=0  0  0
 ```
 
 **Apply without rebooting:**
